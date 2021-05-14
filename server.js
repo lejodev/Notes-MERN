@@ -1,5 +1,6 @@
 const express = require("express");
 const user = require("./routes/user");
+const notes = require("./routes/notes");
 const mongoose = require("mongoose");
 const expressJWT = require("express-jwt");
 require("dotenv").config();
@@ -20,6 +21,7 @@ app.use(
 );
 
 app.use("/user", user);
+app.use("/notes", notes);
 
 const PORT = process.env.PORT || 8080;
 
