@@ -3,6 +3,7 @@ const user = require("./routes/user");
 const notes = require("./routes/notes");
 const mongoose = require("mongoose");
 const expressJWT = require("express-jwt");
+const path = require("path");
 require("dotenv").config();
 
 require("dotenv/config");
@@ -24,6 +25,14 @@ app.use("/user", user);
 app.use("/notes", notes);
 
 const PORT = process.env.PORT || 8080;
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "client/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
