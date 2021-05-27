@@ -4,9 +4,8 @@ const notes = require("./routes/notes");
 const mongoose = require("mongoose");
 const expressJWT = require("express-jwt");
 const path = require("path");
-require("dotenv").config();
-
 require("dotenv/config");
+
 
 const app = express();
 app.use(express.json());
