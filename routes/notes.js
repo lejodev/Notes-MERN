@@ -14,6 +14,7 @@ router.get("/:userId", async (req, res) => {
   }
 });
 
+// Post note
 router.post("/", (req, res) => {
   const note = new Note({
     title: req.body.title,
@@ -35,6 +36,7 @@ router.post("/", (req, res) => {
   console.log(note);
 });
 
+// Edit note
 router.put("/:id", async (req, res) => {
   const note = {
     title: req.body.title,
