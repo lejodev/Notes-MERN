@@ -2,7 +2,7 @@ const express = require("express");
 const user = require("./routes/user");
 const notes = require("./routes/notes");
 const mongoose = require("mongoose");
-const expressJWT = require("express-jwt");
+// const expressJWT = require("express-jwt");
 const path = require("path");
 require("dotenv").config();
 
