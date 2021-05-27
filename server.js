@@ -6,7 +6,6 @@ const expressJWT = require("express-jwt");
 const path = require("path");
 require("dotenv/config");
 
-
 const app = express();
 app.use(express.json());
 const jwtKey = process.env.JWT_SECRET;
@@ -16,7 +15,7 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
 });
 
 app.use(
-  expressJWT({ jwtKey, algorithms: ["HS256"] }).unless({
+  expressJWT({ secret: jwtKey, algorithms: ["HS256"] }).unless({
     path: ["/user/signin", "/user/login"],
   })
 );
