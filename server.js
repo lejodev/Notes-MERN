@@ -1,9 +1,12 @@
 const express = require("express");
-const user = require("./routes/user");
-const notes = require("./routes/notes");
 const mongoose = require("mongoose");
 const expressJWT = require("express-jwt");
+const dotenv = require("dotenv");
+
+const user = require("./routes/user");
+const notes = require("./routes/notes");
 const path = require("path");
+
 require("dotenv/config");
 
 const app = express();
