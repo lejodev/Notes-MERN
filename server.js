@@ -10,13 +10,14 @@ require("dotenv/config");
 
 const app = express();
 app.use(express.json());
+const jwtKey = process.env.JWT_SECRET;
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
   console.log("Connected to the database");
 });
 
 app.use(
-  expressJWT({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }).unless({
+  expressJWT({ jwtKey, algorithms: ["HS256"] }).unless({
     path: ["/user/signin", "/user/login"],
   })
 );
